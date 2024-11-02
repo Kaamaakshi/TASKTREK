@@ -8,7 +8,7 @@ import doing from "./assets/glowing-star.png";
 import Done from "./assets/check-mark-button.png";
 
 const oldTasks = localStorage.getItem("tasks");
-console.log(oldTasks);
+// console.log(oldTasks);
 
 const App = () => {
   const [tasks, setTasks] = useState(JSON.parse(oldTasks) || []);
