@@ -9,7 +9,7 @@ const TaskForm = ({ setTasks }) => {
   });
 
   const checkTag = (tag) => {
-    return taskData.tags.some((item) => item !== tag);
+    return taskData.tags.some((item) => item === tag);
   };
 
   const selectTag = (tag) => {
@@ -46,12 +46,13 @@ const TaskForm = ({ setTasks }) => {
   const handlesubmit = (e) => {
     e.preventDefault();
     console.log(taskData);
-    // setTasks((prev) => {
-    //   return [...prev, taskData];
-    // });
-
     setTasks((prev) => {
       return [...prev, taskData];
+    });
+    setTaskData({
+      task: "",
+      status: "todo",
+      tags: [],
     });
   };
 
@@ -71,6 +72,7 @@ const TaskForm = ({ setTasks }) => {
         <input
           type="text"
           name="task"
+          value={taskData.task}
           className="task_input"
           placeholder="enter your text"
           // onChange={(e) => handleTaskChange(e)}
@@ -87,22 +89,23 @@ const TaskForm = ({ setTasks }) => {
             <Tag
               TagName="CSS"
               selectTag={selectTag}
-              //selected={checkTag("CSS")}
+              selected={checkTag("CSS")}
             />
             <Tag
               TagName="JavaScript"
               selectTag={selectTag}
-              //selected={checkTag("JavaScript")}
+              selected={checkTag("JavaScript")}
             />
             <Tag
               TagName="React"
               selectTag={selectTag}
-              //selected={checkTag("React")}
+              selected={checkTag("React")}
             />
           </div>
           <div>
             <select
               name="status"
+              value={taskData.status}
               className="task_status"
               onChange={hanleChange}
             >
